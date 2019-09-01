@@ -1,10 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './Container/App';
+import { ConnectedRouter } from 'connected-react-router';
+import {Provider} from 'react-redux'
+import consfigureStore from './configureStore'
 import * as serviceWorker from './serviceWorker';
+import history from 'Utils/history';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const initialState = {};
+const store = consfigureStore(initialState, history);
+const MOUNT_NODE = document.getElementById('root');
+
+ReactDOM.render(
+    <Provider store={store}>
+        <ConnectedRouter history={history}>
+            <App />
+        </ConnectedRouter>
+    </Provider>
+, MOUNT_NODE);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
