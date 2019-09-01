@@ -1,3 +1,4 @@
+import { withRouter } from "react-router";
 import LoginPage from './LoginPage'
 
-export default LoginPage
+export default withRouter(LoginPage)

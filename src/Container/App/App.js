@@ -7,17 +7,17 @@ import LoginPage from 'Container/LoginPage/Lodable'
 import PostsDetailPage from 'Container/PostsDetailPage/Lodable' 
 import 'styles/globalStyle.scss';
 
-function App() {
+function App(props) {
   return (
     <div className='App'>
     <Helmet>
       <meta name='description' content="A React.js Boilerplate application" />
     </Helmet>
-    <Switch>
-      <Route exact path='/' component={LoginPage}/>
-      <Route path='/home' component={HomePage}/>
-      <Route path='/posts/:id' component={PostsDetailPage}/>
-    </Switch>
+      <Switch>
+        <Route exact path='/' component={LoginPage}/>
+        <Route path='/home' component={HomePage}/>
+        <Route path='/posts/:id' component={PostsDetailPage}/>
+      </Switch>
     </div>
   );
 }
