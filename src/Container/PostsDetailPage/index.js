@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { getPostsListAsync, getCommentsListAsync } from './actions'
+import { getPostsListAsync, getCommentsListAsync, deletePostAsync, editCommentAsync } from './actions'
 import { bindActionCreators } from 'redux'
 import PostsDetailPage from './PostsDetailPage'
 
@@ -12,6 +12,8 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
         getPostsListAsync,
         getCommentsListAsync,
+        deletePostAsync,
+        editCommentAsync
     }, dispatch)
 }
 

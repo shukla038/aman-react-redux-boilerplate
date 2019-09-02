@@ -1,6 +1,7 @@
 import React from 'react';
 import Fuse from "fuse.js";
 import Header from 'Components/Header'
+import PropTypes from 'prop-types';
 import './HomePage.scss';
 
 const fuseOptions = {
@@ -11,21 +12,21 @@ const fuseOptions = {
     maxPatternLength: 12,
     minMatchCharLength: 3,
     keys: ['title', 'body']
-  };
-  
+};
+
 class HomePage extends React.Component {
     state = {
         query: '',
-        postsLists:[]
-      };
-    componentDidMount(){
+        postsLists: []
+    };
+    componentDidMount() {
         this.props.getPostsListAsync()
     }
     onChange = (e) => {
-        if(e){
-        this.setState({ query: e.target.value });
+        if (e) {
+            this.setState({ query: e.target.value });
         }
-      }
+    }
     render() {
         const { postsList, history } = this.props
         const postsListsObj = postsList && postsList.postListData && postsList.postListData.postData
@@ -34,25 +35,29 @@ class HomePage extends React.Component {
         console.log('data', data)
         return (
             <React.Fragment>
-                <Header history={history}/>
-                <input placeholder={'Search ...'} onChange={this.onChange} />
+                <Header history={history} />
+                <form>
+                    <input type='text' name='search' placeholder='Search....' onChange={this.onChange} />
+                </form>
                 <ul>
-                {
-                  data.map((dataObj, index) => {
-                        return (
-                                <li className='w3-panel w3-card card-wrapper' onClick={ () => history.push(`/posts/${dataObj.id}`)} key={`post--${index}`}>
+                    {
+                        data.map((dataObj, index) => {
+                            return (
+                                <li className='w3-panel w3-card card-wrapper' onClick={() => history.push(`/posts/${dataObj.id}`)} key={`post--${index}`}>
                                     <div className='font-weight-bold'>{dataObj.title}</div>
                                     <div>{dataObj.body}</div>
                                 </li>
-                        )
-                    })
-                }
+                            )
+                        })
+                    }
                 </ul>
             </React.Fragment>
         );
     }
 }
-
+HomePage.propTypes = {
+    getPostsListAsync : PropTypes.func.isRequired
+}
 export default HomePage;
 
 

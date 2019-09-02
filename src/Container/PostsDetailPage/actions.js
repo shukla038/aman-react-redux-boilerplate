@@ -42,4 +42,33 @@ export const getCommentsListAsync = (id) => {
         })
     } 
 }
+export const deletePostAsync = (id, body) => {
+    return (dispatch, getState) => {
+        return axios.delete(api.posts.POSTDETAIL(id), body).then(
+            response => {
+                if(response && response.data && response.status === 200) {
+                // dispatch(getPostsList(response.data))
+                return response
+                }
+            }
+        ).catch( err => {
+            throw err
+        })
+    } 
+}
+export const editCommentAsync = (id, content) => {
+    return (dispatch, getState) => {
+        return axios.put(api.posts.POSTDETAIL(id),content).then(
+            response => {
+                if(response && response.data && response.status === 200) {
+                // dispatch(getPostsList(response.data))
+                return response
+                }
+            }
+        ).catch( err => {
+            throw err
+        })
+    } 
+}
+
 

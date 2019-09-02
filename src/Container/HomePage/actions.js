@@ -4,8 +4,8 @@ import axios from 'axios';
 
 export function getPostsList(payload) {
     return {
-      type: POSTS_LIST,
-      payload
+        type: POSTS_LIST,
+        payload
     };
 }
 
@@ -14,13 +14,13 @@ export const getPostsListAsync = () => {
     return (dispatch, getState) => {
         return axios.get(api.posts.GETPOST).then(
             response => {
-                if(response && response.data && response.status === 200) {
-                dispatch(getPostsList(response.data))
+                if (response && response.data && response.status === 200) {
+                    dispatch(getPostsList(response.data))
                 }
             }
-        ).catch( err => {
+        ).catch(err => {
             throw err
         })
-    } 
+    }
 }
 

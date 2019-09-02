@@ -9,6 +9,8 @@ class LoginPage extends React.Component{
         && parseInt(obj2) === 1234567
         ) {
             this.props.history.push('/home')
+        } else {
+            alert('Oops!.....wrong UserName or Password')
         }
     }
     render(){
