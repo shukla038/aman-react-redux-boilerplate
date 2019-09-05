@@ -2,6 +2,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Live Demo : [https://shukla038.github.io/aman-react-redux-boilerplate/](https://shukla038.github.io/aman-react-redux-boilerplate/)
 
+UserName : amanshukla_456
+Password : 1234567
+
 ## Available Scripts
 
 In the project directory, you can run:
