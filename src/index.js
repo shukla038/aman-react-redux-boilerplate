@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom'
 import './index.css';
 import App from './Container/App';
 import { ConnectedRouter } from 'connected-react-router';
@@ -11,12 +12,12 @@ import history from 'Utils/history';
 const initialState = {};
 const store = consfigureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('root');
-
+console.log('sdfjhg', process.env.PUBLIC_URL)
 ReactDOM.render(
     <Provider store={store}>
-        <ConnectedRouter history={history}>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
             <App />
-        </ConnectedRouter>
+        </BrowserRouter>
     </Provider>
 , MOUNT_NODE);
 
