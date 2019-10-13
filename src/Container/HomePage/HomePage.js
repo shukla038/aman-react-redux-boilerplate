@@ -1,56 +1,48 @@
 import React from 'react';
-import Fuse from "fuse.js";
 import Header from 'Components/Header'
 import PropTypes from 'prop-types';
 import './HomePage.scss';
-
-const fuseOptions = {
-    shouldSort: true,
-    threshold: 0.4,
-    location: 0,
-    distance: 50,
-    maxPatternLength: 12,
-    minMatchCharLength: 3,
-    keys: ['title', 'body']
-};
+import * as Data from 'Container/HomePage/data'
 
 class HomePage extends React.Component {
-    state = {
-        query: '',
-        postsLists: []
-    };
     componentDidMount() {
         this.props.getPostsListAsync()
     }
-    onChange = (e) => {
-        if (e) {
-            this.setState({ query: e.target.value });
+    handleCard = (obj, index, dummyArray) => {
+        window.scroll(0,0)
+        this.props.history.push(`/home?${obj.TrailerURL.split('=')[1]}`)
+        for(var i=0; i < dummyArray.length; i++){
+            document.getElementById(`card-${i}`).className= 'reset--styling'
         }
+        document.getElementById(`card-${index}`).className= 'selected--box'
     }
     render() {
-        const { postsList, history } = this.props
-        const postsListsObj = postsList && postsList.postListData && postsList.postListData.postData
-        const fuse = new Fuse(postsListsObj, fuseOptions);
-        const data = this.state.query ? fuse.search(this.state.query) : postsListsObj;
-        console.log('data', data)
+        const { history } = this.props
+        var dummyArray = []
+       for(var key in Data[0]){
+            if (Data[0].hasOwnProperty(key)){
+                dummyArray.push(Data[0][key])
+        }
+        }
         return (
             <React.Fragment>
                 <Header history={history} />
-                <form>
-                    <input type='text' name='search' placeholder='Search....' onChange={this.onChange} />
-                </form>
-                <ul>
-                    {
-                        data.map((dataObj, index) => {
-                            return (
-                                <li className='w3-panel w3-card card-wrapper' onClick={() => history.push(`/posts/${dataObj.id}`)} key={`post--${index}`}>
-                                    <div className='font-weight-bold'>{dataObj.title}</div>
-                                    <div>{dataObj.body}</div>
-                                </li>
-                            )
-                        })
+                {window.location.search ?
+                    <div className='traier--video'>
+                        <iframe width={'50%'} height="345"
+                            src={`https://www.youtube.com/embed/${window.location.search.split('?')[1]}?autoplay=1`}>
+                        </iframe>
+                    </div> : ''}
+                <div className='flex-container'>
+                    {dummyArray.map((obj, index) =>
+                        (<div key={`card--wrapper--${index}`}
+                            className='card-wrapper' onClick={() => this.handleCard(obj, index, dummyArray)}>
+                            <img className={`class`} id={`card-${index}`}
+                                src={`https://in.bmscdn.com/events/moviecard/${obj.EventImageCode}.jpg`} />
+                        </div>)
+                    )
                     }
-                </ul>
+                </div>
             </React.Fragment>
         );
     }

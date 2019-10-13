@@ -2,6 +2,7 @@
     overflow: hidden;
     background-color: #f1f1f1;
     padding: 34px 60px;
+    background: black;
   }
   
   .header a {
@@ -26,8 +27,9 @@
   }
   
   .header a.active {
-    background-color: dodgerblue;
     color: white;
+    min-width: 150px;
+    margin: 10px;
   }
   
   .header-right {

@@ -1,26 +1,31 @@
-.card-wrapper {
-    cursor: pointer;
-    min-height: 100px;
+.flex-container{
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+background: #000000d6;
+.card-wrapper{
+  padding: 25px;
+  cursor: pointer;
+  min-height: 100px;
+  img{
+    max-width: 200px;
+    &:hover{
+      transform: scale(1.4);
+      transition: transform .4s;
+    }
+  }
+  .selected--box{
+    border: solid 4px green
+  }
+  .reset--styling{
+    border:none
+  }
 }
-input[type=text] {
-    margin:10px; 
-    width: 200px;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: white;
-    // background-image: url('searchicon.png');
-    background-position: 10px 10px; 
-    background-repeat: no-repeat;
-    padding: 12px 20px 12px 40px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
-  }
-  
-  input[type=text]:focus {
-    width: 100%;
-  }
-  ul {
-    padding: 20px;
-  }
+}
+.traier--video{
+  background: black;
+  padding: 10px;
+}
+ul {
+  padding: 20px;
+}
