@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { getPostsListAsync } from './actions'
+import { getRepoDetailsAsync, getAllIssuesAsync } from './actions'
 import { bindActionCreators } from 'redux'
 import HomePage from './HomePage'
 
@@ -10,7 +10,8 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
-        getPostsListAsync
+        getRepoDetailsAsync,
+        getAllIssuesAsync
     }, dispatch)
 }
 

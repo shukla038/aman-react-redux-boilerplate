@@ -1,28 +1,40 @@
-import { POSTS_LIST } from './constants'
+import { POSTS_LIST, ISSUES_LIST } from './constants'
 import { api } from 'Config/apiConfig.js'
 import axios from 'axios';
 
-export function getPostsList(payload) {
+export function getRepoDetails(payload) {
     return {
         type: POSTS_LIST,
         payload
     };
 }
+export function getIssuesList(payload) {
+    return {
+        type: ISSUES_LIST,
+        payload
+    };
+}
 
 //Action dispatcher
-export const getPostsListAsync = () => {
+export const getRepoDetailsAsync = (queryObj) => {
     return (dispatch, getState) => {
-        return axios.get(api.posts.GETPOST,{'headers':{'Access-Control-Allow-Origin' : '*', 'crossDomain':true },
-        proxy: {
-            host: 'http://localhost',
-            port: 3000
-          }
-    }
-    ).then(
+        return axios.get(api.repo.ISSUES_LIST(queryObj)).then(
             response => {
-                debugger
                 if (response && response.data && response.status === 200) {
-                    dispatch(getPostsList(response.data))
+                    return dispatch(getRepoDetails(response.data))
+                }
+            }
+        ).catch(err => {
+            throw err
+        })
+    }
+};
+export const getAllIssuesAsync = () => {
+    return(dispatch, getState) => {
+        return axios.get(api.repo.GET_REPO_DETAILS).then(
+            response => {
+                if (response && response.data && response.status === 200) {
+                    return dispatch(getIssuesList(response.data))
                 }
             }
         ).catch(err => {

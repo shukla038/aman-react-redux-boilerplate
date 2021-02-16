@@ -1,31 +1,24 @@
-.flex-container{
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-background: #000000d6;
-.card-wrapper{
-  padding: 25px;
-  cursor: pointer;
-  min-height: 100px;
-  img{
-    max-width: 200px;
-    &:hover{
-      transform: scale(1.4);
-      transition: transform .4s;
-    }
-  }
-  .selected--box{
-    border: solid 4px green
-  }
-  .reset--styling{
-    border:none
-  }
-}
-}
-.traier--video{
-  background: black;
-  padding: 10px;
-}
+
 ul {
   padding: 20px;
+}
+.issues--list{
+    li {
+      padding: 1rem;
+      text-align: left;
+      border: solid 1px gray;
+      border-radius: 4px;
+      background: lightgray;
+      margin: 0.5rem;
+      cursor: pointer;
+    }
+}
+.page-numbers{
+  display: flex;
+  li{
+    border: solid 1px gray;
+    border-radius: 4px;
+    max-width: 200px;
+    margin: 0 auto;
+  }
 }

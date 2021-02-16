@@ -1,54 +1,88 @@
 import React from 'react';
-import Header from 'Components/Header'
 import PropTypes from 'prop-types';
 import './HomePage.scss';
 import * as Data from 'Container/HomePage/data'
 
 class HomePage extends React.Component {
+    state = {
+        currentPage: 1,
+        issuesPerPage: 60,
+        Issues:[],
+        totalIssues: null
+    }
+    onPagechange = (event) => {
+        this.setState({
+            currentPage: Number(event.target.id)
+          }, () => {
+            const { getRepoDetailsAsync , match} = this.props;
+            getRepoDetailsAsync({
+                repo : match.path.slice(1),
+                issueType: 'open',
+                perPage: this.state.issuesPerPage,
+                page: this.state.currentPage
+            }).then((response)=> {
+                this.setState({ Issues : response.payload.items})
+            })
+          });
+    }
+    componentDidUpdate(prevProps, prevState){
+        if(prevState.Issues !== this.state.Issues){
+            this.setState({ Issues : this.state.Issues})   
+        }
+    }
     componentDidMount() {
-        this.props.getPostsListAsync()
+        const { getRepoDetailsAsync, getAllIssuesAsync , match} = this.props;
+        
+        getRepoDetailsAsync({
+            repo : match.path.slice(1),
+            issueType: 'open',
+            perPage: this.state.issuesPerPage,
+            page: this.state.currentPage
+        }).then((response)=> {
+            this.setState({ Issues : response.payload.items})
+        });
+
+        getAllIssuesAsync().then(response => this.setState({totalIssues : response.payload.open_issues_count}));
     }
-    handleCard = (obj, index, dummyArray) => {
-        window.scroll(0,0)
-        this.props.history.push(`/home?${obj.TrailerURL.split('=')[1]}`)
-        for(var i=0; i < dummyArray.length; i++){
-            document.getElementById(`card-${i}`).className= 'reset--styling'
-        }
-        document.getElementById(`card-${index}`).className= 'selected--box'
-    }
+    
     render() {
-        const { history } = this.props
-        var dummyArray = []
-       for(var key in Data[0]){
-            if (Data[0].hasOwnProperty(key)){
-                dummyArray.push(Data[0][key])
+        const { history } = this.props;
+        const { Issues, currentPage, issuesPerPage } = this.state;
+        const renderIssues = Issues.length && Issues.map((Issue, index) => {
+          return <li onClick={()=> window.open(Issue.html_url)} key={index}>{Issue.title}</li>;
+        });
+
+        const pageNumbers = [];
+        for (let i = 1; i <= Math.ceil(this.state.totalIssues / issuesPerPage); i++) {
+          pageNumbers.push(i);
         }
-        }
+        const renderPageNumbers = pageNumbers.map(number => {
+            return (
+              <li
+                key={number}
+                id={number}
+                onClick={this.onPagechange}
+              >
+                {number}
+              </li>
+            );
+          });
+          console.log('renderIssues----',renderIssues)
         return (
             <React.Fragment>
-                <Header history={history} />
-                {window.location.search ?
-                    <div className='traier--video'>
-                        <iframe width={'50%'} height="345"
-                            src={`https://www.youtube.com/embed/${window.location.search.split('?')[1]}?autoplay=1`}>
-                        </iframe>
-                    </div> : ''}
-                <div className='flex-container'>
-                    {dummyArray.map((obj, index) =>
-                        (<div key={`card--wrapper--${index}`}
-                            className='card-wrapper' onClick={() => this.handleCard(obj, index, dummyArray)}>
-                            <img className={`class`} id={`card-${index}`}
-                                src={`https://in.bmscdn.com/events/moviecard/${obj.EventImageCode}.jpg`} />
-                        </div>)
-                    )
-                    }
-                </div>
+            <ul className="issues--list">
+              {renderIssues}
+            </ul>
+            <ul className="page-numbers">
+              {renderPageNumbers}
+            </ul>
             </React.Fragment>
         );
     }
 }
 HomePage.propTypes = {
-    getPostsListAsync : PropTypes.func.isRequired
+    getRepoDetailsAsync : PropTypes.func.isRequired,
+    getAllIssuesAsync : PropTypes.func.isRequired
 }
 export default HomePage;
 
