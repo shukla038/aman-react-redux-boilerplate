@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/shukla038/aman-react-redux-boilerplate/tree/assignment/1mg/precache-manifest.41e1fdba607e10b6b5da0f1dd91cbc18.js"
+  "/aman-react-redux-boilerplate/tree/assignment/1mg/precache-manifest.5e56db49464da7a307a7018b3e136ffc.js"
 );
 
 self.addEventListener('message', (event) => {
@@ -33,7 +33,7 @@ workbox.core.clientsClaim();
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("/shukla038/aman-react-redux-boilerplate/tree/assignment/1mg/index.html"), {
+workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("/aman-react-redux-boilerplate/tree/assignment/1mg/index.html"), {
   
   blacklist: [/^\/_/,/\/[^\/?]+\.[^\/]+$/],
 });
