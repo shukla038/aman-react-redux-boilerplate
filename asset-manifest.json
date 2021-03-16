@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/aman-react-redux-boilerplate/tree/assignment/1mg/static/css/main.3d4dd294.chunk.css",
-    "main.js": "/aman-react-redux-boilerplate/tree/assignment/1mg/static/js/main.807a4736.chunk.js",
-    "main.js.map": "/aman-react-redux-boilerplate/tree/assignment/1mg/static/js/main.807a4736.chunk.js.map",
-    "runtime~main.js": "/aman-react-redux-boilerplate/tree/assignment/1mg/static/js/runtime~main.1fdc1236.js",
-    "runtime~main.js.map": "/aman-react-redux-boilerplate/tree/assignment/1mg/static/js/runtime~main.1fdc1236.js.map",
-    "static/js/2.2149c25c.chunk.js": "/aman-react-redux-boilerplate/tree/assignment/1mg/static/js/2.2149c25c.chunk.js",
-    "static/js/2.2149c25c.chunk.js.map": "/aman-react-redux-boilerplate/tree/assignment/1mg/static/js/2.2149c25c.chunk.js.map",
-    "static/js/3.40e8647c.chunk.js": "/aman-react-redux-boilerplate/tree/assignment/1mg/static/js/3.40e8647c.chunk.js",
-    "static/js/3.40e8647c.chunk.js.map": "/aman-react-redux-boilerplate/tree/assignment/1mg/static/js/3.40e8647c.chunk.js.map",
-    "static/js/4.d8dc0b9b.chunk.js": "/aman-react-redux-boilerplate/tree/assignment/1mg/static/js/4.d8dc0b9b.chunk.js",
-    "static/js/4.d8dc0b9b.chunk.js.map": "/aman-react-redux-boilerplate/tree/assignment/1mg/static/js/4.d8dc0b9b.chunk.js.map",
-    "index.html": "/aman-react-redux-boilerplate/tree/assignment/1mg/index.html",
-    "precache-manifest.5e56db49464da7a307a7018b3e136ffc.js": "/aman-react-redux-boilerplate/tree/assignment/1mg/precache-manifest.5e56db49464da7a307a7018b3e136ffc.js",
-    "service-worker.js": "/aman-react-redux-boilerplate/tree/assignment/1mg/service-worker.js",
-    "static/css/main.3d4dd294.chunk.css.map": "/aman-react-redux-boilerplate/tree/assignment/1mg/static/css/main.3d4dd294.chunk.css.map"
+    "main.css": "/aman-react-redux-boilerplate/static/css/main.3d4dd294.chunk.css",
+    "main.js": "/aman-react-redux-boilerplate/static/js/main.9945f880.chunk.js",
+    "main.js.map": "/aman-react-redux-boilerplate/static/js/main.9945f880.chunk.js.map",
+    "runtime~main.js": "/aman-react-redux-boilerplate/static/js/runtime~main.61bc9696.js",
+    "runtime~main.js.map": "/aman-react-redux-boilerplate/static/js/runtime~main.61bc9696.js.map",
+    "static/js/2.2149c25c.chunk.js": "/aman-react-redux-boilerplate/static/js/2.2149c25c.chunk.js",
+    "static/js/2.2149c25c.chunk.js.map": "/aman-react-redux-boilerplate/static/js/2.2149c25c.chunk.js.map",
+    "static/js/3.64e89e75.chunk.js": "/aman-react-redux-boilerplate/static/js/3.64e89e75.chunk.js",
+    "static/js/3.64e89e75.chunk.js.map": "/aman-react-redux-boilerplate/static/js/3.64e89e75.chunk.js.map",
+    "static/js/4.d8dc0b9b.chunk.js": "/aman-react-redux-boilerplate/static/js/4.d8dc0b9b.chunk.js",
+    "static/js/4.d8dc0b9b.chunk.js.map": "/aman-react-redux-boilerplate/static/js/4.d8dc0b9b.chunk.js.map",
+    "index.html": "/aman-react-redux-boilerplate/index.html",
+    "precache-manifest.3f844ae0d30787bbc7d032d072cd57b4.js": "/aman-react-redux-boilerplate/precache-manifest.3f844ae0d30787bbc7d032d072cd57b4.js",
+    "service-worker.js": "/aman-react-redux-boilerplate/service-worker.js",
+    "static/css/main.3d4dd294.chunk.css.map": "/aman-react-redux-boilerplate/static/css/main.3d4dd294.chunk.css.map"
   }
 }
