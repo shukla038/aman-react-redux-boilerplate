@@ -1,4 +1,4 @@
-import { POSTS_LIST } from './constants';
+import { POSTS_LIST, DETAIL_LIST } from './constants';
 
 export const initialState = {
     loading: false,
@@ -11,6 +11,16 @@ function homeReducer(state = initialState, action) {
           ...state,
           loading: true,
           postData: action.payload
+          
+        };
+  
+        return newState;
+      }
+      case DETAIL_LIST:{
+        const newState = {
+          ...state,
+          loading: true,
+          detailsData: action.payload
           
         };
   

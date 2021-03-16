@@ -1,8 +1,9 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
-import HomePage from 'Container/HomePage/Lodable'
+import HomePage from 'Container/HomePage/Lodable';
+import DetailsPage from 'Container/HomePage/DetailsPage';
 import 'styles/globalStyle.scss';
 
 function App(props) {
@@ -12,8 +13,15 @@ function App(props) {
       <meta name='description' content="A React.js Boilerplate application" />
     </Helmet>
       <Switch>
-        <Route exact path='/' component={HomePage}/>
-        <Route path='/home' component={HomePage}/>
+        <Route
+        exact
+        path='/'
+        render={({ location }) => (
+          <Redirect to={{ ...location, pathname: "/1" }} />
+        )}
+        />
+        <Route exact path='/:pageId' component={HomePage}/>
+        <Route exact path='/details/:itemId' component={DetailsPage}/>
       </Switch>
     </div>
   );

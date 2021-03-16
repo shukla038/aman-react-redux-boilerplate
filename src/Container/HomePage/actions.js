@@ -1,4 +1,4 @@
-import { POSTS_LIST } from './constants'
+import { POSTS_LIST, DETAIL_LIST } from './constants'
 import { api } from 'Config/apiConfig.js'
 import axios from 'axios';
 
@@ -8,11 +8,17 @@ export function getPostsList(payload) {
         payload
     };
 }
+export function getDetailsList(payload) {
+    return {
+        type: DETAIL_LIST,
+        payload
+    };
+}
 
 //Action dispatcher
-export const getPostsListAsync = () => {
+export const getPostsListAsync = (offset, page) => {
     return (dispatch, getState) => {
-        return axios.get(api.posts.GETPOST,{'headers':{'Access-Control-Allow-Origin' : '*', 'crossDomain':true },
+        return axios.get(api.posts.GETPOST(offset, page),{'headers':{'Access-Control-Allow-Origin' : '*', 'crossDomain':true },
         proxy: {
             host: 'http://localhost',
             port: 3000
@@ -20,9 +26,8 @@ export const getPostsListAsync = () => {
     }
     ).then(
             response => {
-                debugger
                 if (response && response.data && response.status === 200) {
-                    dispatch(getPostsList(response.data))
+                    return dispatch(getPostsList(response.data))
                 }
             }
         ).catch(err => {
@@ -30,4 +35,24 @@ export const getPostsListAsync = () => {
         })
     }
 }
+export const getDetailsListAsync = (id) => {
+    return (dispatch, getState) => {
+        return axios.get(api.detail.GETDETAILS(id),{'headers':{'Access-Control-Allow-Origin' : '*', 'crossDomain':true },
+        proxy: {
+            host: 'http://localhost',
+            port: 3000
+          }
+    }
+    ).then(
+            response => {
+                if (response && response.data && response.status === 200) {
+                    return dispatch(getDetailsList(response.data))
+                }
+            }
+        ).catch(err => {
+            throw err
+        })
+    }
+}
+
 
